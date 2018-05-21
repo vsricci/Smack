@@ -22,6 +22,7 @@
 		185D841D20A4A0B000F89227 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D841C20A4A0B000F89227 /* LoginViewController.swift */; };
 		185D841F20A4B52900F89227 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D841E20A4B52900F89227 /* CreateAccountViewController.swift */; };
 		185D842220A4DBB700F89227 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D842120A4DBB700F89227 /* AuthService.swift */; };
+		18BEE7FD20B34EE60053D876 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BEE7FC20B34EE50053D876 /* RoundedButton.swift */; };
 		2482EF1CE2C45B4E8FEF99F8 /* Pods_SmackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1394596D0A405D5C3E045F8 /* Pods_SmackUITests.framework */; };
 		46B7F2EC3F40EFFC202110D6 /* Pods_SmackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 572DEDFDD38E07738B45D020 /* Pods_SmackTests.framework */; };
 		EC609073624B2FCE2D4D3F28 /* Pods_Smack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC18D503642C9104B21BC50E /* Pods_Smack.framework */; };
@@ -68,6 +69,7 @@
 		185D841C20A4A0B000F89227 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		185D841E20A4B52900F89227 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		185D842120A4DBB700F89227 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		18BEE7FC20B34EE50053D876 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		3E0B8A730BAA7278E7E51E47 /* Pods-SmackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmackTests/Pods-SmackTests.release.xcconfig"; sourceTree = "<group>"; };
 		500F1AA0CC6F59CD1165905F /* Pods-Smack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.release.xcconfig"; sourceTree = "<group>"; };
 		572DEDFDD38E07738B45D020 /* Pods_SmackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				185D841720A4826100F89227 /* GradientView.swift */,
+				18BEE7FC20B34EE50053D876 /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Smack/Pods-Smack-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -455,6 +459,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -528,6 +533,7 @@
 				185D841320A47C0300F89227 /* ChatViewController.swift in Sources */,
 				185D841D20A4A0B000F89227 /* LoginViewController.swift in Sources */,
 				185D841B20A4931D00F89227 /* Constants.swift in Sources */,
+				18BEE7FD20B34EE60053D876 /* RoundedButton.swift in Sources */,
 				185D841F20A4B52900F89227 /* CreateAccountViewController.swift in Sources */,
 				185D842220A4DBB700F89227 /* AuthService.swift in Sources */,
 				185D841120A47AB900F89227 /* SWRevealViewController.m in Sources */,
@@ -709,10 +715,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 889286V7CX;
 				INFOPLIST_FILE = Smack/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsricci.smack.Smack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smack/SWRevealViewController/Smack-Bridging-Header.h";
@@ -731,10 +734,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 889286V7CX;
 				INFOPLIST_FILE = Smack/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsricci.smack.Smack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smack/SWRevealViewController/Smack-Bridging-Header.h";
@@ -752,11 +752,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 889286V7CX;
 				INFOPLIST_FILE = SmackTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsricci.smack.SmackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -774,11 +770,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 889286V7CX;
 				INFOPLIST_FILE = SmackTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsricci.smack.SmackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -795,11 +787,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 889286V7CX;
 				INFOPLIST_FILE = SmackUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsricci.smack.SmackUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -816,11 +804,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 889286V7CX;
 				INFOPLIST_FILE = SmackUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsricci.smack.SmackUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

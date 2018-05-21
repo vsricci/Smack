@@ -9,6 +9,7 @@ target 'Smack' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'Socket.IO-Client-Swift'
+	pod 'IQKeyboardManagerSwift'
 
   target 'SmackTests' do
     inherit! :search_paths
