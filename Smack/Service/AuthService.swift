@@ -70,7 +70,7 @@ class AuthService {
             "password": password
         ]
         
-        manager.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADERS).responseJSON { (response) in
+        manager.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADERS).validate().responseJSON { (response) in
             
             if response.result.error == nil {
 //                if let json = response.result.value as? [String: Any] {
@@ -98,6 +98,40 @@ class AuthService {
             }
         }
         
+    }
+    
+    func createUser(name: String, email: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
+        let lowerCaseEmail = email.lowercased()
+        
+        let body: [String: Any] = [
+            "name": name,
+            "email": lowerCaseEmail,
+            "avatarName": avatarName,
+            "avatarColor": avatarColor
+        ]
+        let header = ["Authorization": "Bearer \(AuthService.sharedInstance.authToken)",
+            "Content-Type": "Application/json; charset=utf-8"]
+        
+       manager.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).validate().responseJSON { (response) in
+        
+                if response.result.error == nil {
+       
+                    guard let data = response.data else {return}
+                    let json = try! JSON(data: data)
+                    let id = json["_id"].stringValue
+                    let color = json["avatarColor"].stringValue
+                    let avatarName = json["avatarName"].stringValue
+                    let email = json["email"].stringValue
+                    let name = json["name"].stringValue
+                    
+                    UserDataService.sharedInstance.setUserData(id: id, color: color, avatarName: avatarName, email: email, name: name)
+                    completion(true)
+                }else {
+                    completion(false)
+                    debugPrint(response.result.error as Any)
+        }
+    
+            }
     }
     
     
