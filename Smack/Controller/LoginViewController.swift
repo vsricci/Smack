@@ -12,36 +12,50 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
         
     }
     @IBAction func closePressed(_ sender: UIButton) {
           dismiss(animated: true, completion: nil)
     }
     @IBAction func loginPressed(_ sender: UIButton) {
+        
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+        
+        guard let username = usernameTextField.text, usernameTextField.text != "" else {return}
+        guard let password = passwordTextField.text, passwordTextField.text != "" else {return}
+        
+        AuthService.sharedInstance.loginUser(email: username, password: password) { (success) in
+            
+            if success {
+               
+                AuthService.sharedInstance.findUserByEmail(completion: { (success) in
+                    
+                    if success {
+                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        self.activityIndicatorView.isHidden = true
+                        self.activityIndicatorView.stopAnimating()
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+                
+            }
+        }
     }
     @IBAction func signUpPressed(_ sender: UIButton) {
         
         performSegue(withIdentifier: TO_CREATE_ACCOUNT, sender: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setupView(){
+        
+        activityIndicatorView.isHidden = true
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor : smackPurplePlaceholder])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor : smackPurplePlaceholder])
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

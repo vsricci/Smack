@@ -109,6 +109,9 @@
                                     <constraint firstAttribute="width" constant="22" id="ydO-ei-2dR"/>
                                 </constraints>
                                 <state key="normal" image="addChannelButton"/>
+                                <connections>
+                                    <action selector="addChannelPressed:" destination="LFo-vf-N7n" eventType="touchUpInside" id="Kes-Wa-EhV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya3-ts-D7s">
                                 <rect key="frame" x="111" y="548" width="48" height="34"/>
@@ -129,7 +132,7 @@
                                 <rect key="frame" x="0.0" y="122" width="375" height="398"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="59" id="imy-yW-ttA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="channelCell" rowHeight="59" id="imy-yW-ttA" customClass="ChannelCell" customModule="Smack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="imy-yW-ttA" id="xy6-22-5CQ">
@@ -151,6 +154,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="channelName" destination="oQu-uG-fyI" id="zym-wo-Kla"/>
+                                            <outlet property="channelNameLbl" destination="V7t-aM-heC" id="hDc-4D-Ikt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -181,6 +188,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loginBtn" destination="Ya3-ts-D7s" id="GED-Lw-ri4"/>
+                        <outlet property="tableView" destination="lBH-Iy-YTn" id="9bH-Qr-OhQ"/>
                         <outlet property="userImg" destination="9lv-5z-4QT" id="ece-ow-JuV"/>
                         <segue destination="PkV-pv-HWN" kind="show" identifier="toLogin" id="MEH-Qh-GcO"/>
                     </connections>
@@ -290,13 +298,19 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-QW-dLA">
+                                <rect key="frame" x="169" y="215" width="37" height="37"/>
+                                <color key="color" red="0.2901960784" green="0.30196078430000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="seT-Ho-6IP" firstAttribute="top" secondItem="bWW-75-QzB" secondAttribute="bottom" constant="40" id="56S-LW-kaz"/>
                             <constraint firstItem="wDg-ag-kcd" firstAttribute="centerX" secondItem="Xrl-nh-rqK" secondAttribute="centerX" id="EoG-SF-fEr"/>
                             <constraint firstItem="W4Z-C6-L3M" firstAttribute="centerX" secondItem="Xrl-nh-rqK" secondAttribute="centerX" id="Fuv-rt-Cuu"/>
+                            <constraint firstItem="YBJ-QW-dLA" firstAttribute="centerX" secondItem="YEv-Fn-cmI" secondAttribute="centerX" id="GBA-rS-FMK"/>
                             <constraint firstItem="wDg-ag-kcd" firstAttribute="top" secondItem="seT-Ho-6IP" secondAttribute="bottom" constant="40" id="Icq-iT-GNe"/>
+                            <constraint firstItem="YBJ-QW-dLA" firstAttribute="centerY" secondItem="YEv-Fn-cmI" secondAttribute="centerY" constant="-100" id="Sed-4t-Sw2"/>
                             <constraint firstItem="0aW-LF-qBI" firstAttribute="top" secondItem="wDg-ag-kcd" secondAttribute="bottom" constant="24" id="eqm-zw-xgj"/>
                             <constraint firstItem="W4Z-C6-L3M" firstAttribute="top" secondItem="0aW-LF-qBI" secondAttribute="bottom" constant="5" id="h5m-jh-PKa"/>
                             <constraint firstItem="0aW-LF-qBI" firstAttribute="width" secondItem="wDg-ag-kcd" secondAttribute="width" id="koL-bY-T2W"/>
@@ -308,6 +322,7 @@
                         <viewLayoutGuide key="safeArea" id="Xrl-nh-rqK"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="YBJ-QW-dLA" id="Qtc-pv-URz"/>
                         <outlet property="passwordTextField" destination="W3A-7c-ONr" id="yXS-Xt-ao0"/>
                         <outlet property="usernameTextField" destination="tvp-fr-ENo" id="Qjr-66-uS8"/>
                         <segue destination="lpi-fd-5ma" kind="show" identifier="toCreateAccount" id="C33-yN-5ho"/>
