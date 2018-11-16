@@ -89,6 +89,7 @@ class AuthService {
                     
                     self.userEmail = json["user"].stringValue
                     self.authToken = json["token"].stringValue
+                print(self.authToken)
                     self.isLoggedIn = true
                     result(true)
                 

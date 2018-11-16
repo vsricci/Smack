@@ -67,5 +67,7 @@ class UserDataService {
         AuthService.sharedInstance.isLoggedIn = false
         AuthService.sharedInstance.userEmail = ""
         AuthService.sharedInstance.authToken = ""
+        MessageService.sharedInstance.clearChannels()
+        MessageService.sharedInstance.clearMessages()
     }
 }

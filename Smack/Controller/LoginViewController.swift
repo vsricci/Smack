@@ -37,6 +37,7 @@ class LoginViewController: UIViewController {
                     
                     if success {
                         NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        NotificationCenter.default.post(name: NOTIF_CHANNELS_LOADED, object: nil)
                         self.activityIndicatorView.isHidden = true
                         self.activityIndicatorView.stopAnimating()
                         self.dismiss(animated: true, completion: nil)

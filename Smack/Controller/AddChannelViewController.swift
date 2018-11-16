@@ -23,7 +23,7 @@ class AddChannelViewController: UIViewController {
 
     @IBAction func createChannelPressed(_ sender: Any) {
         guard let channelName = nameChannelField.text, nameChannelField.text != "" else {return}
-        guard let channelDesc = nameChannelField.text, nameChannelField.text != "" else {return}
+        guard let channelDesc = descriptionChannelField.text, descriptionChannelField.text != "" else {return}
         
         SocketService.sharedInstance.addChannel(channelName: channelName, channelDescription: channelDesc) { (success) in
             
